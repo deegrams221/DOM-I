@@ -73,17 +73,18 @@ newElementHome.textContent = "Home";
 navInfo.appendChild(newElementInfo);
 navHome.prepend(newElementHome);
 
+
 // CTA Section
-const ctaImg = document.getElementById("cta-img");
+const ctaImg = document.querySelector("#cta-img");
 ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
 
 const ctaTxt = document.querySelector(".cta-text h1");
-ctaTxt.textContent = siteContent.cta["h1"];
+//ctaTxt.textContent = siteContent["cta"]["h1"];
+ctaTxt.innerText = siteContent.cta.h1.split(' ').join('\n');
 
-
+// CTA Button
 const ctaBtn = document.querySelector(".cta-text button");
-ctaBtn.textContent = siteContent.cta["button"];
-
+ctaBtn.textContent = siteContent["cta"]["button"];
 
 // Top-Content Section
 const topHeaders = document.querySelectorAll(".main-content h4");
@@ -117,7 +118,10 @@ const contactHeader = document.querySelector(".contact h4");
 contactHeader.textContent = siteContent["contact"]["contact-h4"];
 
 const contactTxt = document.querySelectorAll(".contact p");
-contactTxt[0].textContent = siteContent["contact"]["address"];
+//contactTxt[0].textContent = siteContent["contact"]["address"];
+let addressArray = siteContent['contact']['address'].split(' ');
+addressArray.splice(4, 0, '\r\n');
+contactTxt[0].innerText = addressArray.join(' ');
 contactTxt[1].textContent = siteContent["contact"]["phone"];
 contactTxt[2].textContent = siteContent["contact"]["email"];
 
